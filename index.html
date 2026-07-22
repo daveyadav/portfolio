@@ -119,8 +119,8 @@
     .theme-btn .ticon{display:inline-block;transition:opacity .25s var(--ease-gentle),transform .35s var(--ease-gentle);}
     .theme-btn.switching .ticon{opacity:0;transform:rotate(-90deg) scale(.4);}
     .ham{display:none;flex-direction:column;gap:5px;border:none;background:none;cursor:none;padding:4px;}
-    .ham span{display:block;width:22px;height:1.5px;background:var(--muted2);transition:all .3s;}
-    .mob-nav{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:499;opacity:0;visibility:hidden;transform:translateY(-14px);transition:opacity .4s var(--ease-gentle),transform .4s var(--ease-gentle),visibility 0s linear .4s;}
+    .ham span{display:block;width:22px;height:1.5px;background:var(--muted2);transition:all .35s var(--ease-gentle);}
+    .mob-nav{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:499;opacity:0;visibility:hidden;transform:translateY(-14px);transition:opacity .4s var(--ease-gentle),transform .4s var(--ease-gentle),visibility 0s linear .4s;overflow-y:auto;}
     .mob-nav.open{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .4s var(--ease-gentle),transform .4s var(--ease-gentle),visibility 0s linear 0s;}
     .mob-nav a{font-family:var(--ff-head);font-size:2.8rem;font-weight:800;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .2s,letter-spacing .2s;}
     .mob-nav a:hover{color:var(--text);letter-spacing:.1em;}
@@ -299,7 +299,9 @@
     .cico{width:36px;height:36px;border-radius:7px;background:var(--accent-dim);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;transition:background .2s,transform .25s cubic-bezier(0.34,1.56,0.64,1);}
     .crow:hover .cico{background:var(--accent);transform:scale(1.1) rotate(-4deg);}
     .clbl{font-family:var(--ff-mono);font-size:.59rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.12rem;}
-    .cval{font-size:.86rem;color:var(--text);display:flex;align-items:center;gap:.5rem;}
+    .cval{font-size:.86rem;color:var(--text);display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+    .email-link{color:var(--text);text-decoration:none;border-bottom:1px dashed var(--border2);transition:color .2s var(--ease-gentle),border-color .2s var(--ease-gentle);}
+    .email-link:hover{color:var(--accent);border-color:var(--accent);}
     .copy-btn{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:.12rem .45rem;background:none;cursor:none;transition:color .2s,border-color .2s;}
     .copy-btn:hover{color:var(--accent);border-color:var(--accent);}
     .social-row{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--card);border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow-card);}
@@ -362,9 +364,13 @@
     /* ━━━━━━━━━━━━━━━━━ MOBILE ━━━━━━━━━━━━━━━━━ */
     @media(max-width:900px){
       .nav-links,.nav-status{display:none;}
-      .ham{display:flex;}
+      .ham{display:flex;padding:8px;}
+      .theme-btn{width:40px;height:40px;}
 
-      /* Hero: auto height, no dead space */
+      /* Hero: auto height, no dead space. Heading font-size no
+         longer overridden here — the base clamp() already scales
+         smoothly across every width, so there's no hard jump
+         between breakpoints anymore. */
       .hero{
         min-height:auto;
         justify-content:flex-start;
@@ -373,7 +379,6 @@
         padding-left:1.5rem;
         padding-right:1.5rem;
       }
-      .hero-heading{font-size: 137px;}
       .scroll-hint,.avail-badge{display:none;}
       .hero-grid{display:none;}
       .hero-eyebrow{margin-bottom:1.25rem;}
@@ -400,10 +405,20 @@
       .proj-item{grid-template-columns:36px 1fr 20px;gap:.6rem .75rem;padding:1.5rem 0;}
       .proj-intro{margin-bottom:1.75rem;}
 
-      /* Contact */
+      /* Contact: form first, details second — reordered visually
+         via `order` only, DOM stays the same. Bottom padding on the
+         section removed since footer supplies its own top spacing,
+         so there's no doubled-up gap before it. Form padding
+         tightened a touch for a more compact mobile feel. */
       .contact-grid{grid-template-columns:1fr;gap:1rem;}
+      .cform{order:-1;padding:1.5rem 1.25rem;}
       .contact-opening{margin-bottom:2rem;}
       .frow{grid-template-columns:1fr;}
+      #contact{padding-bottom:0;}
+
+      /* Easier email copying: bigger tap target */
+      .copy-btn{padding:.4rem .8rem;font-size:.64rem;}
+      .email-link{font-size:.86rem;}
 
       /* About stats */
       .facts{flex-wrap:wrap;}
@@ -423,7 +438,6 @@
         padding-right:1.25rem;
         padding-bottom:2.5rem;
       }
-      .hero-heading{font-size:clamp(2.8rem,12vw,3.8rem);}
       .hero-eyebrow{font-size:.6rem;margin-bottom:1rem;}
       .hero-chips{gap:.3rem;margin-top:1.2rem;}
       .hchip{font-size:.58rem;padding:.22rem .58rem;}
@@ -450,6 +464,13 @@
       .fact-n{font-size:2rem;}
 
       footer{padding:1.5rem 1.25rem;}
+    }
+
+    /* Short viewports (small/older phones in landscape) — keep the
+       full-screen mobile nav from ever feeling cramped or clipped */
+    @media(max-height:560px){
+      .mob-nav{gap:1.1rem;}
+      .mob-nav a{font-size:2rem;}
     }
   </style>
 </head>
@@ -642,8 +663,9 @@
               <div class="crow">
                 <div class="cico">✉️</div>
                 <div><div class="clbl">EMAIL</div>
-                  <div class="cval"><span id="emailVal">siddhantyadav820@gmail.com</span>
-                    <button class="copy-btn" onclick="copyEmail()" id="copyBtn">copy</button>
+                  <div class="cval">
+                    <a href="mailto:siddhantyadav820@gmail.com" class="email-link" id="emailVal">siddhantyadav820@gmail.com</a>
+                    <button class="copy-btn" onclick="copyEmail()" id="copyBtn" aria-label="Copy email address">copy</button>
                   </div>
                 </div>
               </div>
@@ -764,15 +786,27 @@
   const skillList=document.querySelector('.skill-list');
   if(skillList)sObs.observe(skillList);
 
+  /* Fact counters now ease out (fast start, gentle settle) via
+     requestAnimationFrame instead of ticking up in fixed linear
+     steps — reads as noticeably smoother/more premium. */
   const factObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         e.target.querySelectorAll('.fact-n').forEach(el=>{
           const target=el.dataset.target;
           if(target==='∞'){el.textContent='∞';return;}
-          const end=parseInt(target);let cur=0;
-          const step=Math.max(1,Math.ceil(end/20));el.textContent='0';
-          const t=setInterval(()=>{cur=Math.min(cur+step,end);el.textContent=cur+(end>9?'+':'');if(cur>=end)clearInterval(t);},60);
+          const end=parseInt(target);
+          const duration=1100;
+          const startTime=performance.now();
+          const easeOutCubic=p=>1-Math.pow(1-p,3);
+          el.textContent='0';
+          function tick(now){
+            const p=Math.min((now-startTime)/duration,1);
+            const cur=Math.round(easeOutCubic(p)*end);
+            el.textContent=cur+(end>9?'+':'');
+            if(p<1)requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
         });
         factObs.unobserve(e.target);
       }
