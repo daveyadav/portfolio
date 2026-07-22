@@ -288,7 +288,7 @@
 
     /* contact */
     #contact{background:var(--surface);}
-    .contact-opening{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--text);line-height:1.8;margin-bottom:0rem;font-weight:400;max-width:580px;}
+    .contact-opening{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--text);line-height:1.8;margin-bottom:3rem;font-weight:400;max-width:580px;}
     .contact-opening em{font-style:normal;color:var(--accent);}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;}
     .c-info{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--card);box-shadow:var(--shadow-card);}
@@ -307,7 +307,7 @@
     .social-row{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--card);border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow-card);}
     .soc-btn{display:flex;align-items:center;gap:.45rem;font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.04em;color:var(--muted2);border:1px solid var(--border);border-radius:6px;padding:.45rem .9rem;background:none;cursor:none;text-decoration:none;transition:color .2s,border-color .2s,background .2s,transform .2s;}
     .soc-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);transform:translateY(-2px);}
-    .cform{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;position:relative;overflow:hidden;box-shadow:var(--shadow-card);}
+    .cform{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;box-shadow:var(--shadow-card);}
     .cform::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);}
     .fg{margin-bottom:.9rem;}
     .fl{display:block;font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.12em;color:var(--muted);margin-bottom:.45rem;text-transform:uppercase;}
@@ -317,9 +317,9 @@
     .fi:focus{border-color:rgba(107,142,247,.45);box-shadow:0 0 0 3px rgba(107,142,247,.08);}
     textarea.fi{min-height:110px;resize:vertical;}
     .frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
-    .success-message{opacity:0;transform:translateY(10px);background:rgba(34,197,94,.12);color:#4ade80;padding:12px;margin-top:12px;border-radius:6px;text-align:center;font-size:.82rem;font-family:var(--ff-mono);border:1px solid rgba(34,197,94,.2);transition:all .4s ease;}
+    .success-message{opacity:0;max-height:0;margin-top:0;padding:0 12px;overflow:hidden;transform:translateY(10px);background:rgba(34,197,94,.12);color:#4ade80;border-radius:6px;text-align:center;font-size:.82rem;font-family:var(--ff-mono);border:1px solid rgba(34,197,94,.2);transition:opacity .4s ease,transform .4s ease,max-height .4s ease,margin-top .4s ease,padding .4s ease;}
     [data-theme="light"] .success-message{background:#e8f5e9;color:#2e7d32;}
-    .success-message.show{opacity:1;transform:translateY(0);}
+    .success-message.show{opacity:1;max-height:100px;margin-top:12px;padding:12px;transform:translateY(0);}
 
     footer{border-top:1px solid var(--border);padding:2.5rem var(--pad);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--bg);}
     .fl2{font-size:.8rem;color:var(--muted);}
@@ -512,7 +512,7 @@
   </div>
   <h1 class="hero-heading">
     <span class="hl"><span class="hl-inner">I DESIGN</span></span>
-    <span class="hl"><span class="hl-inner">WEBSITES</span></span>
+    <span class="hl"><span class="hl-inner ghost">WEBSITES</span></span>
     <span class="hl"><span class="hl-inner">PEOPLE</span></span>
     <span class="hl"><span class="hl-inner ac">REMEMBER.</span></span>
   </h1>
