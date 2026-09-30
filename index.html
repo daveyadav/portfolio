@@ -317,7 +317,7 @@ footer{border-top:1px solid var(--border);padding:2.6rem 0;position:relative;z-i
 
 /* ============ RESPONSIVE ============ */
 @media(max-width:1020px){
-  .hero-grid{grid-template-columns:1fr;gap:4rem}
+  .hero-grid{grid-template-columns:1fr;gap:2.75rem}
   .hero-visual{order:-1}
   .id-card{width:min(300px,78vw)}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
@@ -331,11 +331,33 @@ footer{border-top:1px solid var(--border);padding:2.6rem 0;position:relative;z-i
   .nav-links a{display:block;padding:1.1rem}
   #burger{display:flex}
   .nav-cta{display:none}
+  /* rhythm: tighter and minimal on small screens */
+  section{padding:4.25rem 0}
+  .sec-head{margin-bottom:2.4rem}
+  .sec-title{text-wrap:balance}
+  /* hero: compact stack, full-width actions */
+  #hero{padding:104px 0 3.5rem}
+  .hero-title{text-wrap:balance}
+  .hero-ctas{display:grid;grid-template-columns:1fr;gap:.8rem}
+  .hero-ctas .btn{justify-content:center}
+  .hero-stats{gap:1rem}
+  .hstat .num{font-size:1.55rem}
+  .hstat .lbl{font-size:.7rem}
+  /* cards: slimmer padding, single column where cramped */
+  .svc-grid{grid-template-columns:1fr}
+  .svc{padding:1.6rem}
   .proj-grid{grid-template-columns:1fr}
   .proj.featured{grid-column:span 1}
-  .stats-grid{grid-template-columns:repeat(2,1fr);gap:2.4rem}
+  .proj{padding:1.4rem}
+  .skills-wrap,.contact-form-card{padding:1.5rem}
+  .quote-card{padding:1.6rem;font-size:1.1rem}
+  .tl-card{padding:1.2rem 1.25rem}
+  .about-photo{min-height:300px;padding:1.8rem}
+  .mba-card{grid-template-columns:1fr;padding:1.6rem;gap:1.6rem}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:2rem 1rem}
+  .stats-band{padding:3rem 0}
   .f-row{grid-template-columns:1fr}
-  .hero-stats{gap:1.6rem}
+  .c-row .cv{overflow-wrap:anywhere}
   body{cursor:auto}
 }
 </style>
